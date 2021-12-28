@@ -1,0 +1,19 @@
+fragment FieldsUser on User {
+  id
+  email
+  firstName
+  lastName
+  fullName
+}
+
+query users {
+  users {
+    ...FieldsUser
+  }
+}
+
+query userById($id: ID!) {
+  userById(id:$id) @client {
+    ...FieldsUser
+  }
+}

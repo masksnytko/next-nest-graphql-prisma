@@ -1,0 +1,32 @@
+schema: './**/*schema.graphql'
+documents: './**/*.gql'
+
+generates:
+  ./client/types/type-policies.ts:
+    plugins:
+      - typescript-apollo-client-helpers
+      - add:
+          content: 
+            - '/* eslint-disable */'
+            - '// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)'
+
+  ./client/types/graphql.ts:
+    plugins:
+      - typescript
+      - add:
+          content: 
+            - '/* eslint-disable */'
+            - '// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)'
+            
+  ./:
+    preset: near-operation-file
+    presetConfig:
+      extension: .ts
+      baseTypesPath: ./client/types/graphql.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+      - add:
+          content: 
+            - '/* eslint-disable */'
+            - '// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)'

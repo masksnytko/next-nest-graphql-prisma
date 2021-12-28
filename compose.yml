@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
+
+  app:
+    image: app
+    restart: always
+    env_file:
+      - .env
+    build:
+      dockerfile: dockerfile
+      context: './'
+    depends_on:
+      - migrate
+    ports:
+      - 3000:3000
+      - 3001:3001
+    command: yarn start
+
+volumes:
+  postgres: null
