@@ -29,13 +29,13 @@ export class UserService {
     })
   }
 
-  createUser(data: Prisma.UserCreateInput): Promise<User> {
+  create(data: Prisma.UserCreateInput): Promise<User> {
     return this.prisma.user.create({
       data
     })
   }
 
-  updateUser(params: {
+  update(params: {
     where: Prisma.UserWhereUniqueInput;
     data: Prisma.UserUpdateInput;
   }): Promise<User> {
@@ -46,7 +46,7 @@ export class UserService {
     })
   }
 
-  deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
+  delete(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prisma.user.delete({
       where
     })

@@ -1,4 +1,4 @@
-import { UsersDocument, useUserByIdQuery } from '../global'
+import { UsersDocument, useUserByIdQuery } from '../../global'
 import { useDeleteUserMutation } from './operation'
 
 export interface UserProps {
@@ -16,6 +16,7 @@ export function User({ id }: UserProps) {
     variables: {
       id: id
     },
+    awaitRefetchQueries: true,
     refetchQueries: [UsersDocument]
   })
 

@@ -14,12 +14,12 @@ export class UserResolver {
 
   @Mutation(() => User)
   addUser(@Args('data') data: UserInput) {
-    return this.user.createUser(data)
+    return this.user.create(data)
   }
 
   @Mutation(() => User)
   updateUser(@Args('id', { type: () => ID }) id: string, @Args('data') data: UserInput) {
-    return this.user.updateUser({
+    return this.user.update({
       where: { id },
       data
     })
@@ -27,7 +27,7 @@ export class UserResolver {
 
   @Mutation(() => User)
   deleteUser(@Args('id', { type: () => ID }) id: string) {
-    return this.user.deleteUser({ id: id })
+    return this.user.delete({ id: id })
   }
 
   @ResolveField(() => String)

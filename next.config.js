@@ -8,7 +8,7 @@ module.exports = {
       redirects.push({
         source: '/graphql',
         destination: process.env.NEST_PUBLIC_GRAPHQL,
-        permanent: false
+        permanent: true
       })
     }
     return redirects

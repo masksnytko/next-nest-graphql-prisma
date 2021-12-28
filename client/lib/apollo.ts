@@ -16,10 +16,14 @@ const typePolicies: TypedTypePolicies = {
   }
 }
 
-export const apollo = new ApolloClient({
-  ssrMode: ssrMode,
-  cache: new InMemoryCache({
-    typePolicies
-  }),
-  uri: ssrMode ? process.env.NEST_PUBLIC_GRAPHQL : process.env.NEXT_PUBLIC_GRAPHQL
-})
+export function createApollo() {
+  return new ApolloClient({
+    ssrMode: ssrMode,
+    cache: new InMemoryCache({
+      typePolicies
+    }),
+    uri: ssrMode ? process.env.NEST_PUBLIC_GRAPHQL : process.env.NEXT_PUBLIC_GRAPHQL
+  })
+}
+
+export const apollo = createApollo()
