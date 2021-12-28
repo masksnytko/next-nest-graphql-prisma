@@ -1,11 +1,13 @@
 import type { NormalizedCacheObject } from '@apollo/client'
 import { useMemo } from 'react'
-import { apollo } from '../lib/apollo'
+import { createApollo } from '../lib/apollo'
+
+const client = createApollo()
 
 export function useApollo(cache: NormalizedCacheObject) {
   return useMemo(() => {
-    const oldCache = apollo.cache.extract()
-    apollo.cache.restore({ ...oldCache, ...cache })    
-    return apollo
+    const oldCache = client.cache.extract()
+    client.cache.restore({ ...oldCache, ...cache })    
+    return client
   }, [cache])
 }

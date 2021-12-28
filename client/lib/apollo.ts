@@ -25,5 +25,3 @@ export function createApollo() {
     uri: ssrMode ? process.env.NEST_PUBLIC_GRAPHQL : process.env.NEXT_PUBLIC_GRAPHQL
   })
 }
-
-export const apollo = createApollo()
