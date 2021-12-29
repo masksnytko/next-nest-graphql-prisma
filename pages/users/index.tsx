@@ -6,10 +6,7 @@ import { Users } from '../../client/pages/users'
 export const getServerSideProps: GetServerSideProps = async () => {
   const client = createApollo()
   
-  await client.query({
-    fetchPolicy: 'network-only',
-    query: UsersDocument
-  })
+  await client.query({ query: UsersDocument })
 
   return {
     props: {
